@@ -10,12 +10,12 @@ let io = require('socket.io')(server);
 app.set('view engine', 'ejs');
 
 app.use(express.static("views"));
-app.use(InfaStruc.expresslogger)
+app.use(InfaStruc.functions.expresslogger)
 
 app.get('/', function(req, res,next) {
     res.render("index");
 });
 
-server.listen(InfaStruc.Properties.server.port,() => {
-    console.log("Server Listening on port " + InfaStruc.Properties.server.port);
+server.listen(InfaStruc.properties.server.port,() => {
+    console.log("Server Listening on port " + InfaStruc.properties.server.port);
 });
