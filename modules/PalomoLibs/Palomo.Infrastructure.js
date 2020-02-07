@@ -7,15 +7,15 @@ let struc = {}
 
 struc.vars = 
 {
- 
-    timestemp : moment().format("YYYY_MM_DD : HH:mm:ss")
+
 }
 
 struc.functions =
 {
+    "timestemp" : () => { return moment().format("YYYY_MM_DD : HH:mm:ss")},
     "expresslogger" : (req, res,next) => {
     
-        let string = `${struc.vars.timestemp} (${req.method})`
+        let string = `${struc.functions.timestemp()} (${req.method})`
     console.log(string);
     next();
     }

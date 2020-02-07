@@ -13,7 +13,7 @@ app.use(express.static("views"));
 app.use(InfaStruc.functions.expresslogger)
 
 app.get('/', function(req, res,next) {
-    res.render("index");
+    res.render("index",{InfaStruc:InfaStruc});
 });
 
 server.listen(InfaStruc.properties.server.port,() => {
