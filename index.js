@@ -1,22 +1,17 @@
 'use strict';
 //Palomo Infrastructure
-let InfaStruc = require("./modules/PalomoLibs/Palomo.Infrastructure");
+const InfaStruc = require("./modules/PalomoLibs/Palomo.Infrastructure");
 // app.js
-let express = require('express');
-var session = require('express-session');
-var bodyParser = require('body-parser');
-var mysql = require('mysql');
-var path = require('path');
-let app = express();
-let server = require('http').createServer(app);
-let io = require('socket.io')(server);
+const express = require('express');
+const session = require('express-session');
+const bodyParser = require('body-parser');
+const mysql = require('mysql');
+const path = require('path');
+const app = express();
+const server = require('http').createServer(app);
+const io = require('socket.io')(server);
 
-var connection = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'LPChat'
-});
+let connection = mysql.createConnection(InfaStruc.properties.mysql);
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -50,8 +45,8 @@ app.get('/home', function (request, response) {
 });
 
 app.post('/auth', function (request, response) {
-    var username = request.body.username;
-    var password = request.body.password;
+    let username = request.body.username;
+    let password = request.body.password;
     if (username && password) {
         connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function (error, results, fields) {
             if (results.length > 0) {

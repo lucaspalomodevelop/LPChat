@@ -1,6 +1,6 @@
 'use strict';
-let fs = require("fs");
-var moment = require("moment");
+const fs = require("fs");
+const moment = require("moment");
 let properties_path = __dirname + "/../../ServerProperties.json"
 
 let struc = {}
