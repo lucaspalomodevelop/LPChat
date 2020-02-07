@@ -15,7 +15,7 @@ var connection = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: '',
-    database: 'nodelogin'
+    database: 'LPChat'
 });
 
 // set the view engine to ejs
