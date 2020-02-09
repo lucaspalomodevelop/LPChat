@@ -11,7 +11,7 @@ const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
-let connection = mysql.createConnection(InfaStruc.properties.mysql);
+//let connection = mysql.createConnection(InfaStruc.properties.mysql);
 
 // set the view engine to ejs
 app.set('view engine', 'ejs');
@@ -32,36 +32,39 @@ app.get('/', function (req, res, next) {
 
 
 app.get('/login', function (req, res, next) {
-    res.render("index", { InfaStruc: InfaStruc });
+    res.render("login");
 });
 
-app.get('/home', function (request, response) {
-    if (request.session.loggedin) {
-        response.send('Welcome back, ' + request.session.username + '!');
+app.get('/home', function (req, res) {
+    if (req.session.loggedin) {
+        res.send('Welcome back, ' + req.session.username + '!');
     } else {
-        response.send('Please login to view this page!');
+        res.send('Please login to view this page!');
     }
-    response.end();
+    res.end();
 });
 
-app.post('/auth', function (request, response) {
-    let username = request.body.username;
-    let password = request.body.password;
-    if (username && password) {
-        connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function (error, results, fields) {
-            if (results.length > 0) {
-                request.session.loggedin = true;
-                request.session.username = username;
-                response.redirect('/home');
-            } else {
-                response.send('Incorrect Username and/or Password!');
-            }
-            response.end();
-        });
-    } else {
-        response.send('Please enter Username and Password!');
-        response.end();
-    }
+app.post('/auth', function (req, res) {
+    let username = req.body.username;
+    let password = req.body.password;
+    console.log(`${username} : ${password}`);
+    // if (username && password) {
+    //     connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function (error, results, fields) {
+    //         if (results.length > 0) {
+    //             req.session.loggedin = true;
+    //             req.session.username = username;
+    //             res.redirect('/home');
+    //         } else {
+    //             res.send('Incorrect Username and/or Password!');
+    //         }
+    //         res.end();
+    //     });
+    // } else {
+    //     res.send('Please enter Username and Password!');
+    //     res.end();
+    // }
+
+    res.send(`<h1>${username} : ${password}</h1>`);
 });
 
 
