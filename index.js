@@ -18,6 +18,7 @@ app.set('view engine', 'ejs');
 
 app.use(InfaStruc.functions.expresslogger)
 app.use(express.static("views"));
+app.use("/static",express.static("static"));
 app.use(session({
     secret: 'secret',
     resave: true,
