@@ -1,37 +1,39 @@
 <html>
-
 <head>
-    <title>LPChat - Login</title>
-    <link rel="stylesheet" type="text/css" href="static/styles/login.css">
+<title>LP-Chat</title>
 </head>
-
 <body>
-
-  <form action="/auth" method="post">
-    <div class="imgcontainer">
-      <img src="static/pictures/logo.png" alt="Avatar" class="avatar">
-    </div>
-  
-    <div class="container">
-      <label for="uname"><b>Username</b></label>
-      <input type="text" placeholder="Enter Username" name="username" required>
-  
-      <label for="pass">Passwort</label>
-      <input id="pass" placeholder="Enter Password" name="password" type="password" required>
-  
-      <button type="submit">Login</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-  
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" class="cancelbtn">Cancel</button>
-      <span class="psw">Forgot <a href="#">password?</a></span>
-    </div>
-  </form>
-
-
+<div align="center">
+<font size="+3">Chat Login</font><br><br>
+<form name="formular" method="post" action="/login" target="_self">
+<table align="center">
+ <tr>
+  <td>User:</td>
+  <td><input class="input" type="text" name="user" maxlength="20"></td>
+ </tr>
+ <tr> 
+  <td>Passwort:</td>
+  <td><input class="input" type="password" name="pass" maxlength="15"></td>
+ </tr>
+ <tr>
+</table>
+<table>
+ <tr> 
+  <td> <br /> 
+  <input name="job" type="hidden" value="ok">
+  <input name="cid" type="hidden" value="CHATNAME">
+  <input class="submit" type="submit" name="login" value="Login">
+ </td>
+ </tr>
+</table>
+<br>
+<table>
+ <tr> 
+  <p>Noch nicht registriert? <a href="/regist" target="_self"><b>Anmelden</b></a></p></td>
+ </tr>
+</table>
+</form>
+<br>
+</div>
 </body>
-
 </html>

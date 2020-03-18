@@ -11,6 +11,11 @@ const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
 
+//set routers
+var indexRouter = require('./routes/index');
+var userRouter = require('./routes/user');
+var adminRouter = require('./routes/admin');
+
 //let connection = mysql.createConnection(InfaStruc.properties.mysql);
 
 // set the view engine to ejs
@@ -26,48 +31,9 @@ app.use(session({
 }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
-app.get('/', function (req, res, next) {
-    res.redirect("/login");
-});
-
-
-app.get('/login', function (req, res, next) {
-    res.render("login");
-});
-
-app.get('/home', function (req, res) {
-    if (req.session.loggedin) {
-        res.send('Welcome back, ' + req.session.username + '!');
-    } else {
-        res.send('Please login to view this page!');
-    }
-    res.end();
-});
-
-app.post('/auth', function (req, res) {
-    let username = req.body.username;
-    let password = req.body.password;
-    console.log(`${username} : ${password}`);
-    // if (username && password) {
-    //     connection.query('SELECT * FROM accounts WHERE username = ? AND password = ?', [username, password], function (error, results, fields) {
-    //         if (results.length > 0) {
-    //             req.session.loggedin = true;
-    //             req.session.username = username;
-    //             res.redirect('/home');
-    //         } else {
-    //             res.send('Incorrect Username and/or Password!');
-    //         }
-    //         res.end();
-    //     });
-    // } else {
-    //     res.send('Please enter Username and Password!');
-    //     res.end();
-    // }
-
-    res.send(`<h1>${username} : ${password}</h1>`);
-});
-
+//app.use('/user', userRouter);
+app.use('/admin', adminRouter);
+app.use('/', indexRouter);
 
 
 server.listen(InfaStruc.properties.server.port, () => {
