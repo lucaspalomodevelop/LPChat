@@ -12,3 +12,18 @@ sudo apt install node
 sudo apt install npm
 npm install 
 ```
+
+
+### Install - Windows: 
+
+install <a href="https://nodejs.org/">nodejs<a>
+
+```sh
+npm install 
+```
+
+### Start (windows/linux):
+
+```sh
+node app.js
+```
