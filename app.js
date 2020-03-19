@@ -24,10 +24,10 @@ var chatRouter = require('./routes/chat');
 app.set('view engine', 'ejs');
 
 app.use(InfaStruc.functions.expresslogger)
-app.use(function(req, res, next) {
-    req.io = io;
-    next();
-  });
+// app.use(function(req, res, next) {
+//     req.io = io;
+//     next();
+//   });
 //app.use(express.static("views"));
 app.use("/static",express.static("static"));
 app.use(session({

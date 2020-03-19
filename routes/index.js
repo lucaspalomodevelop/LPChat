@@ -5,19 +5,16 @@ var router = express.Router();
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
- //   res.render("../views/index.ejs")
  res.render(__dirname +"/../views/login.ejs")
   });
 
 /* GET login page. */
 router.get('/login', function(req, res, next) {
- //   res.render(__dirname +"/../views/login.ejs")
     res.send("login");
   }); 
 
 /* POST regist page. */
 router.post('/login', function(req, res, next) {
-   // res.render(__dirname +"/../views/index.ejs")
    res.redirect('/home');
   });  
 
