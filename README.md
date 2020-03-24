@@ -6,24 +6,20 @@
 [![Lizense](https://img.shields.io/github/license/lucaspalomodevelop/LPChat?style=flat)](https://github.com/lucaspalomodevelop/LPChat/blob/master/LICENSE) 
 
 
-### Install - Linux: 
-```sh
-sudo apt install node
-sudo apt install npm
-npm install 
+
+
+# Starting the application
+ ```
+ node app.js
+ ```
+
+# Starting the application using Docker
+## Build the image
+```
+docker build --tag LPChat .
 ```
 
-
-### Install - Windows: 
-
-install <a href="https://nodejs.org/">nodejs<a>
-
-```sh
-npm install 
+## Run the image
 ```
-
-### Start (windows/linux):
-
-```sh
-node app.js
+docker run -d discordbot
 ```
