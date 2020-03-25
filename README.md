@@ -21,5 +21,5 @@ docker build --tag LPChat .
 
 ## Run the image
 ```
-docker run -d discordbot
+docker run -d LPChat
 ```
